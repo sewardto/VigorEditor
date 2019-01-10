@@ -259,8 +259,7 @@ int Line::Getlen(int i) const
 {
 	if (i == LF)
 		return gstart;
-	if (i == RG)
-		return len - gstart;
+	return len - gstart;
 }
 
 
@@ -664,11 +663,10 @@ int * Article::getNextVal(const wchar_t *s)
 
 int Article::KMP(const wchar_t *s, const wchar_t *t)
 {
-	int slen, tlen;
 	int i=0 , j=0;
 	int * next = getNextVal(t);
-	slen = wcslen(s);
-	tlen = wcslen(t);
+	size_t slen = wcslen(s);
+	size_t tlen = wcslen(t);
 
 	while (i<slen)
 		while ( j<tlen && i<slen)
